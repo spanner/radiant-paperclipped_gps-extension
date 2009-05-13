@@ -9,6 +9,7 @@ class PaperclippedRoutesExtension < Radiant::Extension
   def activate
     Paperclip::RouteProcessor
     Asset.send :include, RouteAsset
+    AssetsHelper.send :include, RouteHelper
   end
   
   def deactivate

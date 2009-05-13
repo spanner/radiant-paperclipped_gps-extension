@@ -1,0 +1,12 @@
+- include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.routes.mm_api_key']}"
+- include_javascript 'routes'
+
+.asset
+  - if @asset.image?
+    = image_tag @asset.thumbnail(Radiant::Config['assets.display_size'].to_sym)
+  - elsif @asset.route?
+    = map_for(@asset)
+  - elsif @asset.playable?
+    = player_for(@asset)
+  - else
+    = link_to image_tag(@asset.thumbnail(:thumbnail)), @asset.asset.url
