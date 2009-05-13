@@ -40,8 +40,8 @@ module RouteTags
       var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
       mapviewer.addWidget(new MMSmallPanZoomWidget());
       mapviewer.setAllowedZoomFactors(13, 15);
-      MM_setupRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
-      MM_showRouteMap(mapviewer);
+      MM_setupRouteMap(mapviewer);
+      MM_showRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
   }
   MMAttachEvent( window, 'load', loadmap_#{asset.id} );
   //]]>
