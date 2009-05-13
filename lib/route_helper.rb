@@ -10,7 +10,7 @@ module RouteHelper
             include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.routes.mm_api_key']}"
             include_javascript 'mm_routes'
             result << %{
-<div id="mapviewer_#{asset.id}" style="width: 760px; height: 500px;"></div>
+<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 760px; height: 500px;"></div>
 <script type="text/javascript">
   <!-- 
   //<![CDATA[

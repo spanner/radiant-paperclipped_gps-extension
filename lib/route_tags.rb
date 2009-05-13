@@ -42,9 +42,10 @@ module RouteTags
       MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
       mapviewer.addWidget(new MMSmallPanZoomWidget());
       mapviewer.setAllowedZoomFactors(13, 15);
+
       request = mapviewer.getXMLHTTPRequest();
       request.open( 'GET', '#{asset.thumbnail(:gpx)}', true );
-      request.onreadystatechange = MM_showGPX;
+      request.onreadystatechange = function() { MM_showGPX(mapviewer, request); };
       request.send(null);
   }
   MMAttachEvent( window, 'load', loadmap_#{asset.id} );
