@@ -14,15 +14,14 @@ module RouteHelper
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
-  var mapviewer, request;
-  function loadmap_#{asset.id}() {
-      mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
-      request = mapviewer.getXMLHTTPRequest();
-      request.open( 'GET', '#{asset.thumbnail(:gpx)}', true );
-      request.onreadystatechange = MM_showGPX;
-      request.send(null);
-  }
-  MMAttachEvent( window, 'load', loadmap_#{asset.id} );
+    function loadmap_#{asset.id}() {
+        var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
+        mapviewer.addWidget(new MMSmallPanZoomWidget());
+        mapviewer.setAllowedZoomFactors(13, 15);
+        MM_setupRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
+        MM_showRouteMap(mapviewer);
+    }
+    MMAttachEvent( window, 'load', loadmap_#{asset.id} );
   //]]>
   // -->
 </script>
