@@ -4,7 +4,7 @@ module RouteTags
   class TagError < StandardError; end
 
     desc %{
-      Renders a flash-based media player suitable to the current asset file. This works for audio and video but currently is only tested with .flv and .mp3 files. An error will appear if the asset is not audio or video.
+      Renders a slidy-map viewer of the specified route. If it's a route.
 
       With video, you can specify a pre-roll image with the parameter image="asset id". If none is specified then we'll use the first image attached to the same page.
 
@@ -32,18 +32,19 @@ module RouteTags
         height = options['height'] || 300
 
         result = %{
-<div id="mapviewer_#{asset.id}" style="width: #{width}px; height: #{height}px;"></div>
+<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: #{width}px; height: #{height}px;"></div>
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
+  var mapviewer, request;
   function loadmap_#{asset.id}() {
-      var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
+      mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
       MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
       mapviewer.addWidget(new MMSmallPanZoomWidget());
       mapviewer.setAllowedZoomFactors(13, 15);
-      var request = mapviewer.getXMLHTTPRequest();
+      request = mapviewer.getXMLHTTPRequest();
       request.open( 'GET', '#{asset.thumbnail(:gpx)}', true );
-      request.onreadystatechange = MM_showGPX(request, mapviewer);
+      request.onreadystatechange = MM_showGPX;
       request.send(null);
   }
   MMAttachEvent( window, 'load', loadmap_#{asset.id} );
