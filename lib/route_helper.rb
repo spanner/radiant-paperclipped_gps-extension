@@ -5,10 +5,12 @@ module RouteHelper
       
       def map_for(asset)
         if asset.route?
-          result = %{
+          result = ""
+          if Radiant::Config['assets.routes.mm_api_key']
+            include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.routes.mm_api_key']}"
+            include_javascript 'mm_routes'
+            result << %{
 <div id="mapviewer_#{asset.id}" style="width: 600px; height: 400px;"></div>
-          }
-          result << %{
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
@@ -26,7 +28,15 @@ module RouteHelper
   //]]>
   // -->
 </script>
-          }
+            }
+          elsif Radiant::Config['assets.routes.google_api_key']
+            
+            
+            
+            
+            
+          end
+          result
 
         end
       end

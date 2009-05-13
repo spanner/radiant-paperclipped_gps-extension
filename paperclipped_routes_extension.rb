@@ -10,6 +10,7 @@ class PaperclippedRoutesExtension < Radiant::Extension
     Paperclip::RouteProcessor
     Asset.send :include, RouteAsset
     AssetsHelper.send :include, RouteHelper
+    Page.send :include, RouteTags
   end
   
   def deactivate
