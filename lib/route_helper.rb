@@ -12,7 +12,7 @@ module RouteHelper
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
-  function onLoad() {
+  function loadmap_#{asset.id}() {
       var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
       MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
       mapviewer.addWidget(new MMSmallPanZoomWidget());
@@ -22,7 +22,7 @@ module RouteHelper
       request.onreadystatechange = MM_showGPX(request, mapviewer);
       request.send(null);
   }
-  MMAttachEvent( window, 'load', onLoad );
+  MMAttachEvent( window, 'load', loadmap_#{asset.id} );
   //]]>
   // -->
 </script>

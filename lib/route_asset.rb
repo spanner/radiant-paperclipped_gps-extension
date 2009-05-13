@@ -11,7 +11,7 @@ module RouteAsset
       
       @@route_condition = send(:sanitize_sql, ['asset_content_type LIKE ? OR asset_content_type LIKE ?', *route_content_types]).freeze
       @@route_translations = {
-        :exchange => {:format => 'gpx', :gpsbabel => ''},
+        :gpx => {:format => 'gpx', :gpsbabel => ''},
         :garmin => {:format => 'tcx', :gpsbabel_format => 'gtrnctr', :gpsbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
         :google_earth => {:format => 'kml', :gpsbabel => ''},
         :memory_map => {:format => 'mmo', :gpsbabel => ''},
