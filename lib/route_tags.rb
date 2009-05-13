@@ -36,17 +36,12 @@ module RouteTags
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
-  var mapviewer, request;
   function loadmap_#{asset.id}() {
-      mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
-      MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
+      var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
       mapviewer.addWidget(new MMSmallPanZoomWidget());
       mapviewer.setAllowedZoomFactors(13, 15);
-
-      request = mapviewer.getXMLHTTPRequest();
-      request.open( 'GET', '#{asset.thumbnail(:gpx)}', true );
-      request.onreadystatechange = function() { MM_showGPX(mapviewer, request); };
-      request.send(null);
+      MM_setupRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
+      MM_showRouteMap(mapviewer);
   }
   MMAttachEvent( window, 'load', loadmap_#{asset.id} );
   //]]>

@@ -17,9 +17,6 @@ module RouteHelper
   var mapviewer, request;
   function loadmap_#{asset.id}() {
       mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
-      MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
-      mapviewer.addWidget(new MMSmallPanZoomWidget());
-      mapviewer.setAllowedZoomFactors(13, 15);
       request = mapviewer.getXMLHTTPRequest();
       request.open( 'GET', '#{asset.thumbnail(:gpx)}', true );
       request.onreadystatechange = MM_showGPX;
