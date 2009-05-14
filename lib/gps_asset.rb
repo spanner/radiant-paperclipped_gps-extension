@@ -6,7 +6,7 @@ module GpsAsset
     base.class_eval {
       include InstanceMethods
       @@gps_content_types = ['application/gpx+xml', 'application/tcx+xml']
-      @@gps_extensions = ['.gpx', '.kml', '.tcx']
+      @@gps_extensions = ['.gpx', '.kml', '.tcx', '.mmo']
       @@gps_translations = {
         :gpx => {:format => 'gpx', :gpsbabel => ''},
         :garmin => {:format => 'tcx', :gpsbabel_format => 'gtrnctr', :gpsbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
@@ -62,7 +62,7 @@ module GpsAsset
     alias gps? track?
     
     def choose_processors_with_gps
-      processors = self.track? ? [:gps_processor] : choose_processors_without_gps
+      self.track? ? [:gps_processor] : choose_processors_without_gps
     end
     
     def thumbnail_with_gps(size=nil)
