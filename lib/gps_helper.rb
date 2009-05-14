@@ -4,8 +4,8 @@ module GpsHelper
     base.module_eval {
       
       def map_for(asset)
+        result = ""
         if asset.track?
-          result = ""
           if Radiant::Config['assets.gps.mm_api_key']
             include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}"
             include_javascript 'admin/map_callbacks'
@@ -31,9 +31,10 @@ module GpsHelper
           else
             result << %{<p>Map rendering requires either a Multimap (define setting <em>assets.gps.mm_api_key</em>) or a Google Maps API key (define setting <em>assets.gps.google_api_key</em>).</p>}
           end
-          result
-
+        else
+          result << %{<p>Asset <strong>#{asset.name}</strong> is not a GPS file</p>}
         end
+        result
       end
 
     }
