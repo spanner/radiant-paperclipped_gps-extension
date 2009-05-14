@@ -30,6 +30,8 @@ module GpsAsset
       alias_method_chain :choose_processors, :gps
       alias_method_chain :set_content_type, :gps
       alias_method_chain :thumbnail, :gps
+      alias download thumbnail
+      
     }
 
       
@@ -64,16 +66,16 @@ module GpsAsset
     end
     
     def thumbnail_with_gps(size=nil)
-      if size == 'original' or size.nil?
-        self.asset.url
-      elsif self.track?
-        if self.class.gps_translations.include?(size)
+      if self.track?
+        if size == 'original' or size.nil?
+          self.asset.url
+        elsif self.class.gps_translations.include?(size)
           self.asset.url(size.to_sym)
         else
           "/images/assets/track_#{size.to_s}.png"
         end
       else
-        thumbnail_without_gps
+        thumbnail_without_gps(size)
       end
     end
 
