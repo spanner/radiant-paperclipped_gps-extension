@@ -30,8 +30,6 @@ module Paperclip
       opt << @filters
       opt << %{ -o #{@gpsbabel_format} -F "#{ File.expand_path(dst.path) }" }
       
-      logger.info %{> gpsbabel #{opt.gsub(/\s+/, " ")}}
-      
       begin
         success = Paperclip.run("gpsbabel", opt.gsub(/\s+/, " "))
       rescue PaperclipCommandLineError
