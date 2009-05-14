@@ -10,8 +10,8 @@ module GpsAsset
       @@gps_translations = {
         :gpx => {:format => 'gpx', :trackbabel => ''},
         :garmin => {:format => 'tcx', :trackbabel_format => 'gtrnctr', :trackbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
-        :google_earth => {:format => 'kml', :trackbabel => ''},
-        :memory_map => {:format => 'mmo', :trackbabel => ''},
+        :google => {:format => 'kml', :trackbabel => ''},
+        :mmap => {:format => 'mmo', :trackbabel => ''},
       }
       cattr_reader :gps_content_types, :gps_extensions, :gps_translations
       
