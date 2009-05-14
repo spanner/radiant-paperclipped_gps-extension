@@ -44,7 +44,7 @@ module GpsTags
     end
 
     desc %{
-      Returns the address of the asset with the specified format. This is really an alias for r:assets:thumbnail but with alternative parameter names that make more sense for non-image files.
+      Returns the address of the asset with the specified format. This is really an alias for r:assets:url but with alternative parameter names that make more sense for non-image files.
       For GPS files the format options include 'gpx', 'google', 'garmin' and 'mmap'. 
       Thumbnail names also work.
 
@@ -52,8 +52,8 @@ module GpsTags
       <pre><code><r:assets:download [title="asset_title"] [format="gpx"]></code></pre>
     }
     tag 'assets:download' do |tag|
-      tag.attr['size'] = tag.attr.delete('format')
-      tag.render('assets:thumbnail')
+      tag.attr['size'] = tag.attr['format']
+      tag.render('assets:url')
     end
 
     desc %{
@@ -65,7 +65,7 @@ module GpsTags
       <pre><code><r:assets:download_link [title="asset_title"] [format="gpx"]>Linking text</r:assets:download_link></code></pre>
     }
     tag 'assets:download_link' do |tag|
-      tag.attr['size'] = tag.attr.delete('format')
+      tag.attr['size'] = tag.attr['format']
       tag.render('assets:link')
     end
 

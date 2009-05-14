@@ -8,10 +8,10 @@ module GpsAsset
       @@gps_content_types = ['application/gpx+xml', 'application/tcx+xml']
       @@gps_extensions = ['.gpx', '.kml', '.tcx']
       @@gps_translations = {
-        :gpx => {:format => 'gpx', :trackbabel => ''},
-        :garmin => {:format => 'tcx', :trackbabel_format => 'gtrnctr', :trackbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
-        :google => {:format => 'kml', :trackbabel => ''},
-        :mmap => {:format => 'mmo', :trackbabel => ''},
+        :gpx => {:format => 'gpx', :gpsbabel => ''},
+        :garmin => {:format => 'tcx', :gpsbabel_format => 'gtrnctr', :gpsbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
+        :google => {:format => 'kml', :gpsbabel => ''},
+        :mmap => {:format => 'mmo', :gpsbabel => ''},
       }
       cattr_reader :gps_content_types, :gps_extensions, :gps_translations
       
@@ -48,7 +48,7 @@ module GpsAsset
   end
 
   module ClassMethods     
-    def thumbnail_definitions_with_gps   # NB. gps processor will ignore thumbnail rules without a :trackbabel parameter
+    def thumbnail_definitions_with_gps   # NB. gps processor will ignore thumbnail rules without a :gpsbabel parameter
       thumbnail_definitions_without_gps.merge(gps_translations)
     end
   end
