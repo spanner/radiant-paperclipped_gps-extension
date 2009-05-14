@@ -4,9 +4,11 @@ module GpsHelper
     base.module_eval {
       
       def map_for(asset)
-        result = ""
+        result = " map_for: "
         if asset.track?
+          result = " track: "
           if Radiant::Config['assets.gps.mm_api_key']
+            result = " multimap: "
             include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}"
             include_javascript 'admin/map_callbacks'
             result << %{
