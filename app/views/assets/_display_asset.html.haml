@@ -1,7 +1,7 @@
 .asset
   - if @asset.image?
     = image_tag @asset.thumbnail(Radiant::Config['assets.display_size'].to_sym)
-  - elsif @asset.route?
+  - elsif @asset.track?
     = map_for(@asset)
   - elsif @asset.playable?
     = player_for(@asset)

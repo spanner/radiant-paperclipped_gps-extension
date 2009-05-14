@@ -1,16 +1,16 @@
-module RouteHelper
+module GpsHelper
 
   def self.included(base)
     base.module_eval {
       
       def map_for(asset)
-        if asset.route?
+        if asset.track?
           result = ""
-          if Radiant::Config['assets.routes.mm_api_key']
-            include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.routes.mm_api_key']}"
-            include_javascript 'mm_routes'
+          if Radiant::Config['assets.gps.mm_api_key']
+            include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}"
+            include_javascript 'admin/map_callbacks'
             result << %{
-<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 760px; height: 500px;"></div>
+<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 100%; height: 500px;"></div>
 <script type="text/javascript">
   <!-- 
   //<![CDATA[
@@ -26,12 +26,10 @@ module RouteHelper
   // -->
 </script>
             }
-          elsif Radiant::Config['assets.routes.google_api_key']
-            
-            
-            
-            
-            
+          elsif Radiant::Config['assets.gps.google_api_key']
+            result << %{<p>Sorry. Google maps don't work yet.</p>}
+          else
+            result << %{<p>Map rendering requires either a Multimap (define setting <em>assets.gps.mm_api_key</em>) or a Google Maps API key (define setting <em>assets.gps.google_api_key</em>).</p>}
           end
           result
 

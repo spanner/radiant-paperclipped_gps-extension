@@ -99,7 +99,7 @@ namespace :spec do
   end
 end
 
-desc 'Generate documentation for the paperclipped_routes extension.'
+desc 'Generate documentation for the paperclipped_gps extension.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'PaperclippedRoutesExtension'
@@ -109,7 +109,7 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
 end
 
 # For extensions that are in transition
-desc 'Test the paperclipped_routes extension.'
+desc 'Test the paperclipped_gps extension.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
