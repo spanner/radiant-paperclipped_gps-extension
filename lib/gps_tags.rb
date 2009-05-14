@@ -56,4 +56,17 @@ module GpsTags
       tag.render('assets:thumbnail')
     end
 
+    desc %{
+      Returns a link to the asset with the specified format. This is really an alias for r:assets:link but with alternative parameter names that make more sense for non-image files.
+      For GPS files the format options include 'gpx', 'google', 'garmin' and 'mmap'. 
+      Thumbnail names also work.
+
+      *Usage:* 
+      <pre><code><r:assets:download_link [title="asset_title"] [format="gpx"]>Linking text</r:assets:download_link></code></pre>
+    }
+    tag 'assets:download_link' do |tag|
+      tag.attr['size'] = tag.attr.delete('format')
+      tag.render('assets:link')
+    end
+
 end
