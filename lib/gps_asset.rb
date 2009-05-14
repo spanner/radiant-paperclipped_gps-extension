@@ -29,6 +29,7 @@ module GpsAsset
       # aliased instance methods
       alias_method_chain :choose_processors, :gps
       alias_method_chain :set_content_type, :gps
+      alias_method_chain :thumbnail, :gps
     }
 
       
@@ -56,10 +57,24 @@ module GpsAsset
     def track?
       self.class.gps_extensions.include?(File.extname(self.asset.instance_read(:file_name))) || self.class.send(:track?, self.asset_content_type)
     end
-    alias gps? track?  
+    alias gps? track?
     
     def choose_processors_with_gps
       processors = self.track? ? [:gps_processor] : choose_processors_without_gps
+    end
+    
+    def thumbnail_with_gps(size=nil)
+      if size == 'original' or size.nil?
+        self.asset.url
+      elsif self.track?
+        if self.class.gps_translations.include?(size)
+          self.asset.url(size.to_sym)
+        else
+          "/images/assets/track_#{size.to_s}.png"
+        end
+      else
+        thumbnail_without_gps
+      end
     end
 
     def set_content_type_with_gps

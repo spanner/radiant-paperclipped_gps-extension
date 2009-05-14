@@ -11,7 +11,7 @@ This extension adds to Paperclipped the ability to handle, translate and display
 
 We use GpsBabel calls in much the same way as Paperclip normally uses Imagemagick. 
 
-## Configuraiton
+## Configuration
 
 We've only got multimap maps so far so we need `assets.gps.mm_api_key` in config, and your [multimap account](https://www.multimap.com/my/signin/) has to be set up for the referring url. 
 Work is underway on a google maps equivalent.
