@@ -69,7 +69,7 @@ module GpsAsset
       if self.track?
         if size == 'original' or size.nil?
           self.asset.url
-        elsif self.class.gps_translations.include?(size)
+        elsif self.class.gps_translations.keys.include?(size.to_sym)
           self.asset.url(size.to_sym)
         else
           "/images/assets/track_#{size.to_s}.png"
