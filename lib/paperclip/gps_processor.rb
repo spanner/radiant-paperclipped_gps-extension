@@ -6,7 +6,7 @@ module Paperclip
     attr_accessor :current_format, :target_format, :whiny, :convert_options
 
     def initialize file, options = {}, attachment = nil
-      raise PaperclipError, "!  Skipping non-gps thumbnail rule #{options[:geometry]}, #{options[:format]}" if options[:gpsbabel].nil?
+      raise PaperclipError, "Skipping non-gps thumbnail rule #{options[:geometry]}, #{options[:format]}" if options[:gpsbabel].nil?
       super
       @file             = file
       @output_format    = options[:format]
