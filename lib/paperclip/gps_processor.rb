@@ -20,6 +20,7 @@ module Paperclip
     
     # Performs the conversion of the +file+ into a different xml format. 
     # Returns the Tempfile that contains the new xml.
+    
     def make
       src = @file
       dst = Tempfile.new([@basename, @output_ext].compact.join("."))

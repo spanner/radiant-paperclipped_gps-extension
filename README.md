@@ -5,7 +5,7 @@ This extension adds to Paperclipped the ability to handle, translate and display
 ## Requirements
 
 * [GpsBabel](http://www.gpsbabel.org/)
-* Paperclipped (currently, the [spanner fork](https://github.com/spanner/paperclipped/tree) is required: we need to be able to specify additional processors)
+* Paperclipped (currently, the [spanner fork](https://github.com/spanner/paperclipped/tree) is required)
 * Radiant 0.7.x
 * Multimap API key (google maps not hooked up yet)
 
@@ -13,7 +13,8 @@ We use GpsBabel calls in much the same way as Paperclip normally uses Imagemagic
 
 ## Configuration
 
-We've only got multimap maps so far so we need `assets.gps.mm_api_key` in config, and your [multimap account](https://www.multimap.com/my/signin/) has to be set up for the referring url. 
+We've only got multimap maps so far so we need `assets.gps.mm_api_key` in config, and your [multimap account](https://www.multimap.com/my/signin/) has to be set up for the referring url.
+
 Work is underway on a google maps equivalent.
 
 ## Status
@@ -22,7 +23,7 @@ We're still in development, but so far:
 
 * accepts most files that GpsBabel understands and creates GPX, TCX (for Garmin Training Center), MMO (for Memory Map) and KML files from them.
 * displays basic multimap slidemap of the route or track.
-* map tag javascript is a minimal initialisation of the map viewer. The multimap code is exemplified in `mm_gps.js` and should be easy to apply as is or to customise.
+* map tag javascript is a minimal initialisation of the map viewer. The multimap code is exemplified in `mm_gps.js` and should be easy to apply or to customise.
 
 ## Notes
 

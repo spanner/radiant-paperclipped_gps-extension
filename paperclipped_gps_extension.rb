@@ -7,8 +7,13 @@ class PaperclippedGpsExtension < Radiant::Extension
   url "http://spanner.org/radiant/paperclipped_gps"
   
   def activate
+    Mime::Type.register "application/gpx+xml", :gpx
+    Mime::Type.register "application/tcx+xml", :tcx
+    Mime::Type.register "application/vnd.google-earth.kml+xml", :kml
+    
     Paperclip::GpsProcessor
     Asset.send :include, GpsAsset
+    Admin::AssetsController.send :include, GpsAssetsController
     AssetsHelper.send :include, GpsHelper
     Page.send :include, GpsTags
     Paperclip::Thumbnail.send :include, Paperclip::ThumbnailModifications
@@ -18,3 +23,5 @@ class PaperclippedGpsExtension < Radiant::Extension
   end
   
 end
+
+
