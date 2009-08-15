@@ -21,11 +21,15 @@ module GpsAsset
 
   module ClassMethods     
     def thumbnail_definitions_with_gps   # NB. gps processor will ignore thumbnail rules without a :gpsbabel parameter
-      thumbnail_definitions_without_gps.merge({
+      thumbnail_definitions_without_gps.merge(gps_translations)
+    end
+    
+    def gps_translations
+      {
         :gpx => {:format => 'gpx', :gpsbabel => ''},
         :garmin => {:format => 'tcx', :gpsbabel_format => 'gtrnctr', :gpsbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
         :google => {:format => 'kml', :gpsbabel => ''},
-      })
+      }
     end
   end
   
@@ -39,7 +43,7 @@ module GpsAsset
       if self.gps?
         if format == 'original' or format.nil?
           self.asset.url
-        elsif self.class.thumbnail_definitions.keys.include?(format.to_sym)
+        elsif self.class.gps_translations.keys.include?(format.to_sym)
           self.asset.url(format.to_sym)
         else
           "/images/assets/track_#{format.to_s}.png"
