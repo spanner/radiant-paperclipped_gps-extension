@@ -6,6 +6,7 @@ module Paperclip
     attr_accessor :current_format, :target_format, :whiny, :convert_options
 
     def initialize file, options = {}, attachment = nil
+      raise PaperclipError, "Skipping non-gps thumbnail rule #{options[:format]}" if options[:gpsbabel].nil?
       super
       @file             = file
       @output_format    = options[:format]
@@ -21,6 +22,7 @@ module Paperclip
     # Returns the Tempfile that contains the new xml.
     
     def make
+
       src = @file
       dst = Tempfile.new([@basename, @output_ext].compact.join("."))
 
