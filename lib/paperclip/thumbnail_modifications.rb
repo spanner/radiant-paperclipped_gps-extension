@@ -2,7 +2,7 @@ module Paperclip
   module ThumbnailModifications
 
     def self.included(base)
-      unless base.methods.include?('initialize_without_gps')
+      unless base.instance_methods.include?('initialize_with_gps')
         base.class_eval {
           def initialize_with_gps file, options = {}, attachment = nil
             raise PaperclipError, "Skipping non-image thumbnail rule #{options[:format]}" if options[:geometry].nil?
