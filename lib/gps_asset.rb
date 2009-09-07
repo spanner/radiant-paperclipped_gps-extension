@@ -40,14 +40,8 @@ module GpsAsset
     end
     
     def thumbnail_with_gps(format=nil)
-      if self.gps?
-        if format == 'original' or format.nil?
-          self.asset.url
-        elsif self.class.gps_translations.keys.include?(format.to_sym)
-          self.asset.url(format.to_sym)
-        else
-          "/images/assets/track_#{format.to_s}.png"
-        end
+      if self.gps? && self.class.gps_translations.keys.include?(format.to_sym)
+        self.asset.url(format.to_sym)
       else
         thumbnail_without_gps(format)
       end

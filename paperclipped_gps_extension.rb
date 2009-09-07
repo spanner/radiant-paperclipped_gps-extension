@@ -16,7 +16,7 @@ class PaperclippedGpsExtension < Radiant::Extension
     Admin::AssetsController.send :include, GpsAssetsController
     AssetsHelper.send :include, GpsHelper
     Page.send :include, GpsTags
-    Paperclip::Thumbnail.send :include, Paperclip::ThumbnailModifications
+    Paperclip::Thumbnail.send :include, Paperclip::ThumbnailModifications unless Paperclip::Thumbnail.included_modules.include?(Paperclip::ThumbnailModifications)
   end
   
   def deactivate

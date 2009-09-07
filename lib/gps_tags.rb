@@ -45,7 +45,7 @@ module GpsTags
 
     desc %{
       Returns the address of the asset with the specified format. This is really an alias for r:assets:url but with alternative parameter names that make more sense for non-image files.
-      For GPS files the format options include 'gpx', 'google', 'garmin' and 'mmap'. 
+      For GPS files the format options include 'gpx', 'google' and 'garmin'.
       Thumbnail names also work.
 
       *Usage:* 
@@ -58,7 +58,7 @@ module GpsTags
 
     desc %{
       Returns a link to the asset with the specified format. This is really an alias for r:assets:link but with alternative parameter names that make more sense for non-image files.
-      For GPS files the format options include 'gpx', 'google', 'garmin' and 'mmap'. 
+      For GPS files the format options include 'gpx', 'google' (for kml) and 'garmin' (for tcx).
       Thumbnail names also work.
 
       *Usage:* 
