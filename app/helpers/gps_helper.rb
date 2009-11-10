@@ -5,9 +5,9 @@ module GpsHelper
     logger.warn "!   slidemap_for(#{asset.inspect})"
     if asset.gps?
       if Radiant::Config['assets.gps.mm_api_key']
-        include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}"
         include_javascript 'admin/map_callbacks'
         result << %{
+<script src="http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}" type="text/javascript"></script>
 <div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 100%; height: 500px;"></div>
   <script type="text/javascript">
   <!-- 
