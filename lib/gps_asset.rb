@@ -39,9 +39,15 @@ module GpsAsset
       self.gps? ? [:gps_processor] : choose_processors_without_gps
     end
     
-    def thumbnail_with_gps(format=nil)
-      if self.gps? && self.class.gps_translations.keys.include?(format.to_sym)
-        self.asset.url(format.to_sym)
+    def thumbnail_with_gps(format='gpx')
+      if self.gps? 
+        if self.class.gps_translations.keys.include?(format.to_sym)
+          self.asset.url(format.to_sym)
+        elsif format == 'thumbnail'
+          "/images/assets/track_thumbnail.png"
+        else
+          "/images/assets/track_icon.png"
+        end
       else
         thumbnail_without_gps(format)
       end

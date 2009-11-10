@@ -14,7 +14,7 @@ class PaperclippedGpsExtension < Radiant::Extension
     Paperclip::GpsProcessor
     Asset.send :include, GpsAsset
     Admin::AssetsController.send :include, GpsAssetsController
-    AssetsHelper.send :include, GpsHelper
+    Admin::AssetsController.send :helper, :gps
     Page.send :include, GpsTags
     Paperclip::Thumbnail.send :include, Paperclip::ThumbnailModifications
   end

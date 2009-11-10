@@ -16,7 +16,7 @@ module GpsTags
     tag 'assets:multimap' do |tag|
       options = tag.attr.dup
       asset = find_asset(tag, options)
-      if asset.track?
+      if asset.gps?
         url = asset.thumbnail(:gpx)
         width = options['width'] || 400
         height = options['height'] || 300
