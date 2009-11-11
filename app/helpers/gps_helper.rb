@@ -15,10 +15,7 @@ module GpsHelper
     //<![CDATA[
     function loadmap_#{asset.id}() {
         var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
-        mapviewer.addWidget(new MMSmallPanZoomWidget());
-        mapviewer.setAllowedZoomFactors(13, 15);
         MM_setupRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
-        MM_showRouteMap(mapviewer);
     }
     MMAttachEvent( window, 'load', loadmap_#{asset.id} );
     //]]>

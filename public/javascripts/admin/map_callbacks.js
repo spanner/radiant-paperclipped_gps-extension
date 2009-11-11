@@ -1,13 +1,11 @@
 // this example sets multimap display defaults
 // to prefer OS maps and show both map-chooser and zoom widgets 
 
-function MM_setupRouteMap(mapviewer) {
+function MM_setupRouteMap(mapviewer, url) {
   MMDataResolver.setDataPreferences(MM_WORLD_MAP, [904]);
   mapviewer.addWidget(new MMSmallPanZoomWidget());
   mapviewer.addWidget(new MMMapTypeWidget());
-}
-
-function MM_showRouteMap (mapviewer, url) {
+  mapviewer.setAllowedZoomFactors(13, 15);
   var request = mapviewer.getXMLHTTPRequest();
   request.open( 'GET', url, true );
   request.onreadystatechange = function() { MM_showRoute(mapviewer, request); };
