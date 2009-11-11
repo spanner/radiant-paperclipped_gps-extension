@@ -2,12 +2,10 @@ module GpsHelper
 
   def slidemap_for(asset)
     result = ""
-    logger.warn "!   slidemap_for(#{asset.inspect})"
     if asset.gps?
       if Radiant::Config['assets.gps.mm_api_key']
-        include_javascript 'admin/map_callbacks'
+        include_javascript 'admin/map_callbacks'    # post-loads the main multimap scripts
         result << %{
-<script src="http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}" type="text/javascript"></script>
 <div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 100%; height: 500px;"></div>
   <script type="text/javascript">
   <!-- 
@@ -19,6 +17,7 @@ module GpsHelper
         MM_setupRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
         MM_showRouteMap(mapviewer);
     }
+    MM_getScripts('#{Radiant::Config['assets.gps.mm_api_key']}');
     MMAttachEvent( window, 'load', loadmap_#{asset.id} );
     //]]>
   // -->

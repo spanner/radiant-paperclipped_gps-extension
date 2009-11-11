@@ -1,3 +1,16 @@
+// For the simple but really awkward reason that multimap javascripts have no .js suffix, we have to post-load them
+
+var mmscript = null;
+function MM_getScripts(apikey) {
+  if (mmscript) return;
+  var head = document.getElementsByTagName("head")[0];
+  mmscript = document.createElement('script');
+  mmscript.id = 'mm_script_tag';
+  mmscript.type = 'text/javascript';
+  mmscript.src = "http://developer.multimap.com/API/maps/1.2/" + apikey;
+  head.appendChild(mmscript);
+}
+
 // this example sets multimap display defaults
 // to prefer OS maps and show both map-chooser and zoom widgets 
 
