@@ -7,8 +7,9 @@ module GpsHelper
       if Radiant::Config['assets.gps.mm_api_key']
         include_javascript "http://developer.multimap.com/API/maps/1.2/#{Radiant::Config['assets.gps.mm_api_key']}"
         include_javascript 'admin/map_callbacks'
+        include_stylesheet 'admin/maps'
         result << %{
-<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: 100%; height: 500px;"></div>
+<div id="mapviewer_#{asset.id}" class="mapviewer"></div>
   <script type="text/javascript">
   <!-- 
     //<![CDATA[
