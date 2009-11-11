@@ -11,6 +11,9 @@ class PaperclippedGpsExtension < Radiant::Extension
     Mime::Type.register "application/tcx+xml", :tcx
     Mime::Type.register "application/vnd.google-earth.kml+xml", :kml
     
+    # this adds a special case for javascript includes that omits the .js suffix if the address ends in /
+    ActionView::Helpers::AssetTagHelper.send :include, AssetTagHelperModifications
+    
     Paperclip::GpsProcessor
     Asset.send :include, GpsAsset
     Admin::AssetsController.send :include, GpsAssetsController

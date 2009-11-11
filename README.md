@@ -25,6 +25,10 @@ We're still in development, but so far:
 * displays basic multimap slidemap of the route or track.
 * map tag javascript is a minimal initialisation of the map viewer. The multimap code is exemplified in `mm_gps.js` and should be easy to apply or to customise.
 
+## Warnings
+
+* This extensions adds a hack to `javascript_include_tag` (by overriding `path_to_javascript`) so that javascript addresses beginning with http do not have .js appended to them. This is so we can get the multimap scripts in (which don't have a .js suffix and don't work if you add one). It seems to me like sensible behaviour anyway, but it might conceivably have side effects if you use other third-party scripts and really hate typing '.js'.
+
 ## Notes
 
 * There are no tests yet specific to GPS files
