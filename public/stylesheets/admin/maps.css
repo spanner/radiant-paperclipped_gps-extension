@@ -3,3 +3,8 @@ div.mapviewer {
   width: 100%; 
   height: 500px;
 }
+
+/* polylines in Internet Explorer  */
+v\:* {
+  behavior:url(#default#VML);
+}
