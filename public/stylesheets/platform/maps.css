@@ -4,6 +4,11 @@ div.mapviewer {
   height: 500px;
 }
 
+a.gpx {
+  padding-left: 24px;
+  background: transparent url(/images/useful/route.png) no-repeat top left;
+}
+
 /* polylines in ie  */
 v\:* {
   behavior:url(#default#VML);
