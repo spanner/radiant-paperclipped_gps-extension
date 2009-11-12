@@ -40,8 +40,8 @@ module GpsTags
       <pre><code><r:assets:download [title="asset_title"] [format="gpx"]></code></pre>
     }
     tag 'assets:download' do |tag|
-      tag.attr['size'] = tag.attr['format']
-      tag.render('assets:url')
+      tag.attr['size'] = tag.attr.delete('format')
+      tag.render('assets:url', tag.attr.dup)
     end
 
     desc %{
@@ -53,8 +53,8 @@ module GpsTags
       <pre><code><r:assets:download_link [title="asset_title"] [format="gpx"]>Linking text</r:assets:download_link></code></pre>
     }
     tag 'assets:download_link' do |tag|
-      tag.attr['size'] = tag.attr['format']
-      tag.render('assets:link')
+      tag.attr['size'] = tag.attr.delete('format')
+      tag.render('assets:link', tag.attr.dup, &tag.block)
     end
 
 end

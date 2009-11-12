@@ -1,0 +1,10 @@
+div.mapviewer {
+  position: relative;
+  width: 100%; 
+  height: 500px;
+}
+
+/* polylines in ie  */
+v\:* {
+  behavior:url(#default#VML);
+}
