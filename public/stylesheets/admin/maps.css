@@ -4,7 +4,7 @@ div.mapviewer {
   height: 500px;
 }
 
-/* polylines in Internet Explorer  */
+/* polylines in ie  */
 v\:* {
   behavior:url(#default#VML);
 }

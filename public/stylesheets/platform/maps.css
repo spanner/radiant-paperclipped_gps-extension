@@ -4,15 +4,18 @@ div.mapviewer {
   height: 500px;
 }
 div.gps_links {
-  min-height: 30px;
+  min-height: 24px;
   font-family: helvetica, arial, sans;
   font-size: 24px;
+  line-height: 1;
   background: transparent url(/images/useful/route.png) no-repeat top left;
 }
 
 div.gps_links a {
   padding-left: 24px;
+  margin-left: 6px;
 }
+
 div.gps_links a.gpx {
   background: transparent url(/images/gps_icons/gpx.png) no-repeat top left;
 }
