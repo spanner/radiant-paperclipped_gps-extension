@@ -4,16 +4,20 @@ div.mapviewer {
   height: 500px;
 }
 div.gps_links {
+  margin: 0 6px;
   min-height: 24px;
   font-family: helvetica, arial, sans;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 1;
   background: transparent url(/images/useful/route.png) no-repeat top left;
 }
 
 div.gps_links a {
+  display: block;
+  float: right;
   padding-left: 24px;
   margin-left: 6px;
+  height: 24px;
 }
 
 div.gps_links a.gpx {
