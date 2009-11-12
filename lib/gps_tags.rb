@@ -18,12 +18,12 @@ module GpsTags
       options = tag.attr.dup
       tag.locals.asset = find_asset(tag, options)
       if tag.locals.asset.gps?
-        url = asset.thumbnail(:gpx)
+        url = tag.locals.asset.thumbnail(:gpx)
         width = options['width'] || "100%"
         height = options['height'] || "400px"
         result = %{
           <div id="mapviewer_#{tag.locals.asset.id}" class="mapviewer" style="width: #{width}; height: #{height};">
-            <a class="route" href="#{tag.render('assets:url', :size=>'gpx')}">#{tag.locals.asset.title}</a>
+            <a class="route" href="#{url}">#{tag.locals.asset.title}</a>
           </div>
         }
       else
