@@ -3,10 +3,30 @@ div.mapviewer {
   width: 100%; 
   height: 500px;
 }
-
-a.gpx {
-  padding-left: 24px;
+div.gps_links {
+  min-height: 30px;
+  font-family: helvetica, arial, sans;
+  font-size: 24px;
   background: transparent url(/images/useful/route.png) no-repeat top left;
+}
+
+div.gps_links a {
+  padding-left: 24px;
+}
+div.gps_links a.gpx {
+  background: transparent url(/images/gps_icons/gpx.png) no-repeat top left;
+}
+
+div.gps_links a.google {
+  background: transparent url(/images/gps_icons/google.png) no-repeat top left;
+}
+
+div.gps_links a.garmin {
+  background: transparent url(/images/gps_icons/garmin.png) no-repeat top left;
+}
+
+div.gps_links a.mmap {
+  background: transparent url(/images/gps_icons/mmap.png) no-repeat top left;
 }
 
 /* polylines in ie  */
