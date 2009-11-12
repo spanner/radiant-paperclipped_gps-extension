@@ -66,7 +66,7 @@ module GpsTags
       <pre><code><r:assets:download_link [title="asset_title"] [format="gpx"]>Linking text</r:assets:download_link></code></pre>
     }
     tag 'assets:gps_links' do |tag|
-      result = %{<div class="gps_links">#{tag.render('assets:title')} }
+      result = %{<div class="gps_links"><span class="title">#{tag.render('assets:title')}</span> }
       [:gpx, :garmin, :google].each do |format|
         url = tag.locals.asset.thumbnail(format)
         result << %{<a href="#{url}" class="#{format}">#{format}</a>}
