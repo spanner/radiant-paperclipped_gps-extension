@@ -7,36 +7,24 @@ module GpsTags
       Renders a multimap slidy-map viewer of the specified asset, provided it's a gps track.
       So far only takes height and width parameters.
 
-      Your layout must include the main multimap js call and another javascript file that defines the MM_setupRouteMap and MM_showRouteMap callbacks. 
-      See the included javascripts/mm_gps.js for an example.
+      Your layout must include the main multimap js call and another javascript file that picks up the mapviewer div and sets up the right callbacks.
+      
+      See the included javascripts/platform/multimap.js for an example.
       
       Usage:
       <pre><code><r:assets:multimap id="1" width="400" height="300" /></code></pre>
     }    
     tag 'assets:multimap' do |tag|
       options = tag.attr.dup
-      asset = find_asset(tag, options)
-      if asset.gps?
+      tag.locals.asset = find_asset(tag, options)
+      if tag.locals.asset.gps?
         url = asset.thumbnail(:gpx)
-        width = options['width'] || 400
-        height = options['height'] || 300
-
+        width = options['width'] || "100%"
+        height = options['height'] || "400px"
         result = %{
-<div id="mapviewer_#{asset.id}" class="mapviewer" style="width: #{width}px; height: #{height}px;"></div>
-<script type="text/javascript">
-  <!-- 
-  //<![CDATA[
-  function loadmap_#{asset.id}() {
-      var mapviewer = new MultimapViewer( document.getElementById( 'mapviewer_#{asset.id}' ) );
-      mapviewer.addWidget(new MMSmallPanZoomWidget());
-      mapviewer.setAllowedZoomFactors(13, 15);
-      MM_setupRouteMap(mapviewer);
-      MM_showRouteMap(mapviewer, '#{asset.thumbnail(:gpx)}');
-  }
-  MMAttachEvent( window, 'load', loadmap_#{asset.id} );
-  //]]>
-  // -->
-</script>
+          <div id="mapviewer_#{tag.locals.asset.id}" class="mapviewer" style="width: #{width}; height: #{height};">
+            <a class="route" href="#{tag.render('assets:url', :size=>'gpx')}">#{tag.locals.asset.title}</a>
+          </div>
         }
       else
         raise TagError, "Asset is not a GPS file."

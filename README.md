@@ -17,6 +17,22 @@ We've only got multimap maps so far so we need `assets.gps.mm_api_key` in config
 
 Work is underway on a google maps equivalent.
 
+## Radius tags
+
+A few useful map tags are defined here:
+
+	r:assets:multimap displays a slidemap (provided you have configured an api key)
+	r:assets:googlemap will do the same one day (but not yet)
+	r:assets:download takes a format attrbute (which can be 'gpx', 'tcx' or 'kml')
+
+And if you install our library extension you automatically get useful conditional and looping tags for each known asset type, so just as `r:if_images` gets you the page images:
+
+	<r:if_gpses><r:gpses:first><r:assets:multimap /></r:gpses:first></r:if_gpses>
+
+	<r:gpses:each><r:assets:download_link format="gpx" /></r:if_gpses>
+
+Gps pluralizes horribly. Sorry about that.
+
 ## Status
 
 We're still in development, but so far:
