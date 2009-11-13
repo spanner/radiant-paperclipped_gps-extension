@@ -12,7 +12,7 @@ module GpsTags
       See the included javascripts/platform/multimap.js for an example.
       
       Usage:
-      <pre><code><r:assets:multimap id="1" width="400" height="300" /></code></pre>
+      <pre><code><r:assets:multimap id="1" [width="100%"] [height="500px"] /></code></pre>
     }    
     tag 'assets:multimap' do |tag|
       options = tag.attr.dup
@@ -20,7 +20,7 @@ module GpsTags
       if tag.locals.asset.gps?
         url = tag.locals.asset.thumbnail(:gpx)
         width = options['width'] || "100%"
-        height = options['height'] || "400px"
+        height = options['height'] || "500px"
         result = %{
           <div id="mapviewer_#{tag.locals.asset.id}" class="mapviewer" style="width: #{width}; height: #{height};">
             <a class="route" href="#{url}">#{tag.locals.asset.title}</a>
