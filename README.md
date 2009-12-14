@@ -2,11 +2,15 @@
 
 This extension adds to Paperclipped the ability to handle, translate and display GPS routes and tracks of various kinds.
 
+## Latest
+
+Revised to work with simplified asset type interface. You will need to update paperclipped.
+
 ## Requirements
 
 * [GpsBabel](http://www.gpsbabel.org/)
 * Paperclipped (currently, the [spanner fork](https://github.com/spanner/paperclipped/tree) is required)
-* Radiant 0.7.x
+* Radiant 0.8.x
 * Multimap API key (google maps not hooked up yet)
 
 We use GpsBabel calls in much the same way as Paperclip normally uses Imagemagick. 

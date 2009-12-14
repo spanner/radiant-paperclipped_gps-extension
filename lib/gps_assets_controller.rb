@@ -1,5 +1,7 @@
 module GpsAssetsController
   
+  # gps files are jsut XML and never arrive with the right mime types
+  
   def self.included(base)
     base.class_eval do
       before_filter :fix_mime_type, :only => [:create, :update]
