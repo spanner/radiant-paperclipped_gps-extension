@@ -17,9 +17,10 @@ class PaperclippedGpsExtension < Radiant::Extension
   end
   
   def activate
-    Mime::Type.register "application/gpx+xml", :gpx
-    Mime::Type.register "application/tcx+xml", :tcx
-    Mime::Type.register "application/vnd.google-earth.kml+xml", :kml
+    Mime::Type.register "application/gpx+xml", :gpx unless defined? Mime::GPX
+    Mime::Type.register "application/tcx+xml", :tcx unless defined? Mime::TCX
+    Mime::Type.register "application/vnd.google-earth.kml+xml", :kml unless defined? Mime::KML
+    
     AssetType.new :gps, :mime_types => %w[application/gpx+xml application/tcx+xml application/vnd.google-earth.kml+xml], :processors => [:gps_processor], :styles => {
       :gpx => {:format => 'gpx', :gpsbabel => ''},
       :garmin => {:format => 'tcx', :gpsbabel_format => 'gtrnctr', :gpsbabel => "-r -x simplify,count=100 -x transform,rte=trk"},
